@@ -7,6 +7,7 @@ var on_cooldown := false
 @export var duration: float = .2
 @export var damage: float = 0
 @export var knockback: float = 10000
+@export var stun_duration: float = 2.0
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var cooldown_timer = $Cooldown
@@ -39,7 +40,7 @@ func _on_duration_timeout():
 	hitbox.monitoring = false
 
 
-func _on_hitbox_body_entered(body):
+func _on_hitbox_body_entered(body: PhysicsBody2D):
 	if body == player:
 		return
 	
@@ -48,3 +49,6 @@ func _on_hitbox_body_entered(body):
 		var distance: float = global_position.distance_squared_to(body.global_position)
 		var force = direction * (1 / distance) * knockback
 		body.apply_force(force)
+	
+	if body.has_method("stun"):
+		body.stun(stun_duration)

@@ -1,3 +1,26 @@
-[gd_scene format=3 uid="uid://cgkex1j1qw45u"]
+[gd_scene load_steps=4 format=3 uid="uid://cgkex1j1qw45u"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_lxc01"]
+[ext_resource type="Texture2D" uid="uid://y227ttk541sa" path="res://Assets/icon.svg" id="2_nixn5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w3via"]
+radius = 16.0312
 
 [node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_lxc01")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.796078, 0, 0.129412, 1)
+position = Vector2(-3.8147e-06, -3.8147e-06)
+scale = Vector2(0.257813, 0.257813)
+texture = ExtResource("2_nixn5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_w3via")
+
+[node name="Stunned" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Stunned" to="." method="_on_stunned_timeout"]

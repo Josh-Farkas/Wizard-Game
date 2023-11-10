@@ -1,13 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://bi23880r36lux"]
+[gd_scene load_steps=6 format=3 uid="uid://bi23880r36lux"]
 
 [ext_resource type="PackedScene" uid="uid://crgxtr51p6j1" path="res://Scenes/Player.tscn" id="1_cr54t"]
 [ext_resource type="Texture2D" uid="uid://y227ttk541sa" path="res://Assets/icon.svg" id="2_5u1nr"]
+[ext_resource type="PackedScene" uid="uid://cgkex1j1qw45u" path="res://Scenes/Enemy.tscn" id="3_uoajn"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_i3dgm"]
+vertices = PackedVector2Array(-227, -92, 1394, -58, 1342, 516, -97, 660)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-227, -92, 1394, -58, 1342, 516, -97, 660)])
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_orggp"]
 
 [node name="World" type="Node2D"]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_i3dgm")
 
 [node name="TileMap" type="TileMap" parent="NavigationRegion2D"]
 format = 2
@@ -30,3 +37,6 @@ texture = ExtResource("2_5u1nr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource("CircleShape2D_orggp")
+
+[node name="Enemy" parent="." instance=ExtResource("3_uoajn")]
+position = Vector2(219, 224)
