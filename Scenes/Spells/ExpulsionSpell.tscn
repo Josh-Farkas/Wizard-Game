@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://tccqkoh0wnb6"]
+
+[node name="Expulsion" type="Node2D"]
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+
+[node name="Cooldown" type="Timer" parent="."]
+
+[node name="Duration" type="Timer" parent="."]
