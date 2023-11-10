@@ -40,3 +40,5 @@ func stun(seconds: float):
 
 func _on_stunned_timeout():
 	stunned = false
+
+# ryan wuz here
