@@ -1,0 +1,85 @@
+All Spells contain an X
+
+Damage Spells
+	Axe
+		Sends a flying Axe (Pierces)
+	Pickaxe (Sidegrade to Axe)
+		Sends a returning Pickaxe (boomerange)
+	Axes (Sidegrade of Axe)
+		Sends multiple, weaker axes
+	Execute (Upgrade of Axe)
+		Sends a fase, powerful, Axe towards enemies
+	Toxin (Upgrade of Exude)
+		Poisons enemies
+	Pixel (Upgrade of Syntax)
+		Sends out damaging Pixels
+	Nexus (Upgrade of Helix)
+		Chain link lightning
+	Helix
+		Helix Spiral Damage Beams
+	Xenon
+		Some sort of weird spell idk
+	Exude
+		Slow, High Volume Spell (possibly poison gas?)
+	Anthrax (Upgrade of Toxin)
+		Highly lethal virus spell (100% kill, but has a delay)
+	Tax
+		Damages Enemies based on their Max HP
+	Galaxy (Upgrade of Vortex)
+		Sends a cosmic spiral forwards
+	Syntax
+		Creates damaging brackets (square or squirly or parentheses or arrows) around target
+	Exponential (Upgrade of Tax)
+		Beam spell that's damage increases over time as it hits the same target
+	Explosion
+		Sends an Explosive fireball-like projectile
+	Lexicon
+		Sends a cycle of Letters at Enemies, with the Random X insta-killing
+	Hexagram (Upgrade to Hex)
+		Sends a pentagram-like damaging rune at enemies
+
+Utility Spells
+	Expulsion (Expel)
+		Pushes Enemies Away
+	Box
+		Creates a Box around an enemy (Preventing it from moving)
+	FedEx (Upgrade to Box)
+		Box, but the enemy is packaged and cant do anything
+	Export (Upgrade to FedEx)
+		FedEx, but the enemy is sent away
+	Fix
+		Heals
+	Xenia
+		Makes an Enemy Friendly
+	Vortex
+		Sends a projectile that sucks in enemies (NO damage)
+	Exorcize (Upgrade to Xenia)
+		Has a higher chance of making an enemy friendly, but has a delay on effectivity
+	
+
+Summoning Spells? (Idk if we want to have these)
+	Lynx
+		A strong tiger
+	Experiement
+		Some sort of weird thing idk
+	Phoenix
+		Summons a Fire-Breathing Phoenix
+		
+
+Random Spells
+	Hex
+		Curses and Enemy (Idk what the curse will do :| )
+	Sex
+		Clones two enemies
+
+Modifiers
+	Max
+		One of the spell's stats are maxed
+	Apex
+		Spell's Highest Power, Extremely Rare Modifier
+	Excel
+		Better Spell
+	Deluxe
+		Better than Excel, but less than Apex
+	Expert
+		Better than Delux, but less than Apex
