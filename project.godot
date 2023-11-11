@@ -19,6 +19,10 @@ config/icon="res://Assets/icon.svg"
 
 project/assembly_name="Wizard Game"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-flexbox/plugin.cfg")
+
 [input]
 
 left={
