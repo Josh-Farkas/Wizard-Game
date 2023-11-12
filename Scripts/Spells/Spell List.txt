@@ -13,6 +13,8 @@ Damage Spells
 		Poisons enemies
 	Pixel (Upgrade of Syntax)
 		Sends out damaging Pixels
+	MegaPixel (Upgrade of Pixel)
+		Sends out bigger, stronger pixels at a slower rate
 	Nexus (Upgrade of Helix)
 		Chain link lightning
 	Helix
