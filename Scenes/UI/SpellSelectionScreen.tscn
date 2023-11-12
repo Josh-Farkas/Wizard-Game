@@ -1,6 +1,48 @@
-[gd_scene load_steps=2 format=3 uid="uid://dm6dsbb6l4e7g"]
+[gd_scene load_steps=9 format=3 uid="uid://dm6dsbb6l4e7g"]
 
+[ext_resource type="Texture2D" uid="uid://du8oe6685eunp" path="res://Assets/BookCover.png" id="1_3u0g3"]
 [ext_resource type="PackedScene" uid="uid://cxyfj3q3f2duu" path="res://Scenes/UI/SpellSelectionButton.tscn" id="1_ccp8y"]
+[ext_resource type="Texture2D" uid="uid://gd5hwfwpxtt" path="res://Assets/BookPage.png" id="2_0hk5c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jouws"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 99
+corner_radius_top_right = 99
+corner_radius_bottom_right = 99
+corner_radius_bottom_left = 99
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6i7pv"]
+bg_color = Color(0.866667, 0.866667, 0.866667, 1)
+corner_radius_top_left = 99
+corner_radius_top_right = 99
+corner_radius_bottom_right = 99
+corner_radius_bottom_left = 99
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lessf"]
+bg_color = Color(0.733333, 0.733333, 0.733333, 1)
+corner_radius_top_left = 99
+corner_radius_top_right = 99
+corner_radius_bottom_right = 99
+corner_radius_bottom_left = 99
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fyxsu"]
+content_margin_left = 2.0
+content_margin_right = 2.0
+corner_radius_top_left = 99
+corner_radius_top_right = 99
+corner_radius_bottom_right = 99
+corner_radius_bottom_left = 99
+corner_detail = 20
+
+[sub_resource type="Theme" id="Theme_dnr0j"]
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_jouws")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_6i7pv")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_lessf")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_fyxsu")
+VScrollBar/styles/scroll_focus = null
 
 [node name="SpellSelectionScreen" type="Control"]
 layout_mode = 3
@@ -62,11 +104,17 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Panel" type="Panel" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+texture = ExtResource("1_3u0g3")
+region_rect = Rect2(0, 0, 68, 68)
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/NinePatchRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -74,61 +122,107 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/Panel/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/NinePatchRect/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 10
+theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 20
 
-[node name="Panel" type="Panel" parent="Panel/MarginContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Panel/MarginContainer/VBoxContainer/NinePatchRect/HBoxContainer/MarginContainer"]
 layout_mode = 2
+texture = ExtResource("2_0hk5c")
+region_rect = Rect2(0, 0, 44, 44)
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/NinePatchRect/HBoxContainer/MarginContainer/NinePatchRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 25
 
-[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/Panel/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/VBoxContainer/NinePatchRect/HBoxContainer/MarginContainer/NinePatchRect/MarginContainer"]
 layout_mode = 2
-columns = 2
+theme = SubResource("Theme_dnr0j")
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
 
-[node name="SpellSelectionButton" parent="Panel/MarginContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/Panel/MarginContainer/GridContainer" instance=ExtResource("1_ccp8y")]
-layout_mode = 2
-
-[node name="SpellSelectionButton2" parent="Panel/MarginContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/Panel/MarginContainer/GridContainer" instance=ExtResource("1_ccp8y")]
-layout_mode = 2
-
-[node name="SpellSelectionButton3" parent="Panel/MarginContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/Panel/MarginContainer/GridContainer" instance=ExtResource("1_ccp8y")]
-layout_mode = 2
-
-[node name="SpellSelectionButton4" parent="Panel/MarginContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/Panel/MarginContainer/GridContainer" instance=ExtResource("1_ccp8y")]
-layout_mode = 2
-
-[node name="SpellSelectionButton5" parent="Panel/MarginContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/Panel/MarginContainer/GridContainer" instance=ExtResource("1_ccp8y")]
-layout_mode = 2
-
-[node name="SpellSelectionButton6" parent="Panel/MarginContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/Panel/MarginContainer/GridContainer" instance=ExtResource("1_ccp8y")]
-layout_mode = 2
-
-[node name="SpellSelectionButton7" parent="Panel/MarginContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/Panel/MarginContainer/GridContainer" instance=ExtResource("1_ccp8y")]
-layout_mode = 2
-
-[node name="MarginContainer2" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/Panel/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/NinePatchRect/HBoxContainer/MarginContainer/NinePatchRect/MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 20
+
+[node name="Page1Grid" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer/NinePatchRect/HBoxContainer/MarginContainer/NinePatchRect/MarginContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="SpellSelectionButton" parent="Panel/MarginContainer/VBoxContainer/NinePatchRect/HBoxContainer/MarginContainer/NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/Page1Grid" instance=ExtResource("1_ccp8y")]
+layout_mode = 2
+
+[node name="SpellSelectionButton2" parent="Panel/MarginContainer/VBoxContainer/NinePatchRect/HBoxContainer/MarginContainer/NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/Page1Grid" instance=ExtResource("1_ccp8y")]
+layout_mode = 2
+
+[node name="SpellSelectionButton3" parent="Panel/MarginContainer/VBoxContainer/NinePatchRect/HBoxContainer/MarginContainer/NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/Page1Grid" instance=ExtResource("1_ccp8y")]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/NinePatchRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Panel" type="Panel" parent="Panel/MarginContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer2"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Panel/MarginContainer/VBoxContainer/NinePatchRect/HBoxContainer/MarginContainer2"]
 layout_mode = 2
+texture = ExtResource("2_0hk5c")
+region_rect = Rect2(0, 0, 44, 44)
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/NinePatchRect/HBoxContainer/MarginContainer2/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 25
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/VBoxContainer/NinePatchRect/HBoxContainer/MarginContainer2/NinePatchRect/MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_dnr0j")
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/NinePatchRect/HBoxContainer/MarginContainer2/NinePatchRect/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_right = 20
+
+[node name="Page2Grid" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer/NinePatchRect/HBoxContainer/MarginContainer2/NinePatchRect/MarginContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 2
