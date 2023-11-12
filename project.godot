@@ -25,6 +25,10 @@ window/size/mode=2
 
 project/assembly_name="Wizard Game"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-flexbox/plugin.cfg")
+
 [input]
 
 left={
