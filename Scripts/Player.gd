@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
 const spell_dict = {
-	"Expulsion": preload("res://Scenes/Spells/ExpulsionSpell.tscn")
+	"Expulsion": preload("res://Scenes/Spells/ExpulsionSpell.tscn"),
+	"Explosion": preload("res://Scenes/Spells/ExplosionSpell.tscn")
 }
 
 @export var speed = 100.0
@@ -11,6 +12,7 @@ const spell_dict = {
 
 func _ready():
 	add_spell("Expulsion")
+	add_spell("Explosion")
 	
 
 func _physics_process(delta):
@@ -22,6 +24,8 @@ func _physics_process(delta):
 func _input(event):
 	if event.is_action_pressed("spell 1"):
 		cast_spell(1)
+	if event.is_action_pressed("spell 2"):
+		cast_spell(2)
 
 
 func cast_spell(n):

@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=3 uid="uid://btc2aahx1smpf"]
+
+[ext_resource type="Script" path="res://Scripts/Spells/ExplosionSpell.gd" id="1_h1qvf"]
+
+[sub_resource type="Gradient" id="Gradient_wirbq"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.716667, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_pl6vm"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.716667, 0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u61tj"]
+radius = 59.0085
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xt3vk"]
+radius = 0.412311
+
+[node name="Expulsion" type="Node2D"]
+script = ExtResource("1_h1qvf")
+
+[node name="ExplosionHitbox" type="Area2D" parent="."]
+
+[node name="ExplosionParticles" type="CPUParticles2D" parent="ExplosionHitbox"]
+emitting = false
+amount = 2000
+lifetime = 2.0
+one_shot = true
+speed_scale = 3.0
+explosiveness = 1.0
+lifetime_randomness = 0.4
+emission_shape = 1
+emission_sphere_radius = 5.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 80.0
+damping_min = 50.0
+damping_max = 100.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_wirbq")
+color_initial_ramp = SubResource("Gradient_pl6vm")
+hue_variation_min = 1.0
+hue_variation_max = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionHitbox"]
+shape = SubResource("CircleShape2D_u61tj")
+
+[node name="ProjectileHitbox" type="Area2D" parent="." groups=["Spells"]]
+
+[node name="ProjectileParticles" type="CPUParticles2D" parent="ProjectileHitbox"]
+amount = 900
+lifetime = 0.5
+randomness = 0.62
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 5.0
+spread = 30.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+linear_accel_min = 10.0
+linear_accel_max = 10.0
+color_ramp = SubResource("Gradient_wirbq")
+color_initial_ramp = SubResource("Gradient_pl6vm")
+hue_variation_min = 1.0
+hue_variation_max = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileHitbox"]
+scale = Vector2(10, 10)
+shape = SubResource("CircleShape2D_xt3vk")
+
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="ExplosionDuration" type="Timer" parent="."]
+one_shot = true
+
+[node name="ProjectileDuration" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="ExplosionHitbox" to="." method="_on_explosion_hitbox_body_entered"]
+[connection signal="body_entered" from="ProjectileHitbox" to="." method="_on_projectile_hitbox_body_entered"]
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="timeout" from="ExplosionDuration" to="." method="_on_explosion_duration_timeout"]
+[connection signal="timeout" from="ProjectileDuration" to="." method="_on_projectile_duration_timeout"]
